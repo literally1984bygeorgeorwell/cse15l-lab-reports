@@ -1,3 +1,5 @@
 Literally 1984
 
-I don't actually understand how GitHub account authentication works because I'm an absolute clown. I know there's authentication controls on the actual commits, but what prevents identity theft? Anyway, this should fix the problem.
+This repository has been an...enlightening experience. Apparently GitHub doesn't bother verifying commits unless you sign them (which is reasonable, actually) and git doesn't have amazing support for multiple user accounts (also reasonable, actually).
+
+I sure hope this doesn't cause any problems down the line.
