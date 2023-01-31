@@ -78,8 +78,8 @@ The bug results from a common mistake with in-place operations. When performed l
 static void reverseInPlace(int[] arr) {
   for(int i = 0; i < arr.length/2; i += 1) {
     arr[i] ^= arr[arr.length - i - 1];
-	arr[arr.length - i - 1] ^= arr[i];
-	arr[i] ^= arr[arr.length - i - 1];
+    arr[arr.length - i - 1] ^= arr[i];
+    arr[i] ^= arr[arr.length - i - 1];
   }
 }
 ```
