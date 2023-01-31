@@ -6,7 +6,10 @@ VSCode is a commonly used IDE, and apparently the de facto editor used for this 
 
 The installation process is about as straightforward as it gets. You run the installer as you would with any executable. The exact installation process depends on your system, but as of 01/30/2023, the Windows x86_64 installer should first present a license agreement, then prompt for a destination location, a start menu alias, and then various installation settings. You can customize any of these as you see fit (except the license agreement, which must be accepted), but the defaults are honestly fine. Finalize the installation and you're good to go.
 
+In short: Just keep clicking next until VSCode installs. If you're feeling especially quirky and want to embrace Web3, GitHub has an online VSCode editor available [here](https://github.dev). It's probably easier to just follow this tutorial and install it locally, however.
+
 Images of each prompt are attached below:
+
 ![License Agreement](images/remote_access/license.png)
 ![Destination Location](images/remote_access/destination.png)
 ![Start Menu Alias](images/remote_access/start.png)
