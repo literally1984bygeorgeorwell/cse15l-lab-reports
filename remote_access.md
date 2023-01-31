@@ -38,6 +38,7 @@ Now that we have remote accesss, let's run some basic diagnostic commands. First
 ![Verifying the current interpreter](images/remote_access/interpreter_result.png)
 
 We can also look at what user we're running commands as and get an idea of where we are and what that filesystem looks like. The following table has a few recommended commands:
+
 |    Command    |                Behavior                   |
 | ------------- | --------------------------------------    |
 |   `whoami`    | Displays the name of the current user     |
