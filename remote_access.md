@@ -4,7 +4,14 @@
 VSCode is a commonly used IDE, and apparently the de facto editor used for this course. VSCode can be downloaded from the [official website](https://code.visualstudio.com/), and is available for Windows and most \*nix systems. The download page should look something like this:
 ![VSCode Homepage](images/remote_access/vscode_site.png)
 
-I don't have any actual images of the installation process or specific instructions for how to use the installer, since I didn't download it. I prefer a different editor. I don't know if that's a sufficient explanation for "why not", but that's why this step isn't quite complete.
+The installation process is about as straightforward as it gets. You run the installer as you would with any executable. The exact installation process depends on your system, but as of 01/30/2023, the Windows x86_64 installer should first present a license agreement, then prompt for a destination location, a start menu alias, and then various installation settings. You can customize any of these as you see fit (except the license agreement, which must be accepted), but the defaults are honestly fine. Finalize the installation and you're good to go.
+
+Images of each prompt are attached below:
+![License Agreement](images/remote_access/license.png)
+![Destination Location](images/remote_access/destination.png)
+![Start Menu Alias](images/remote_access/start.png)
+![Installation Settings](images/remote_access/installation.png)
+![Confirmation Page](images/remote_access/confirmation.png)
 
 ## Remotely Connecting
 VSCode should have options to remotely connect to servers. There's an included terminal that you can use, and if memory serves correctly, there are also extensions you can download to make your job easier. Since, again, I don't actually use this IDE, I can't offer guidance on how to do it.
@@ -27,7 +34,12 @@ Now that we have remote accesss, let's run some basic diagnostic commands. First
 
 ![Verifying the current interpreter](images/remote_access/interpreter_result.png)
 
-We can also look at what user we're running commands as and get an idea of where we are and what that filesystem looks like. `whoami` displays the name of the current user, `pwd` displays the current working directory, and `ls` will list the files in a specified directory, defaulting to the current one if none is supplied.
+We can also look at what user we're running commands as and get an idea of where we are and what that filesystem looks like. The following table has a few recommended commands:
+|    Command    |                Behavior                   |
+| ------------- | --------------------------------------    |
+|   `whoami`    | Displays the name of the current user     |
+|    `pwd`      | Displays the current working directory    |
+|     `ls`      | Lists the files in the supplied directory |
 
 ![Looking around](images/remote_access/looking_around.png)
 
