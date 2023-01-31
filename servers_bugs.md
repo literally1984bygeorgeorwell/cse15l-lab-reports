@@ -22,7 +22,7 @@ Since this URL's path contains "add-message" and a valid querystring, "test\n" i
 
 Now, we run it again with a second parameter:
 ![Program source code](images/servers_bugs/second_add.png)
-`Handler.handleRequest(new URI("http://localhost:8080/add-message?s=test2")` is called when this second request is made. At this time, session_string is equal to "". `url.getPath()` returns `/add-message?s=test2` and `url.getQuery()` returns `s=test2`.
+`Handler.handleRequest(new URI("http://localhost:8080/add-message?s=test2")` is called when this second request is made. At this time, session_string is equal to "test\n". `url.getPath()` returns `/add-message?s=test2` and `url.getQuery()` returns `s=test2`.
 
 Since this URL's path contains "add-message" and a valid querystring, "test2\n" is appended to `session_string`, which becomes "test\ntest2\n".
 
