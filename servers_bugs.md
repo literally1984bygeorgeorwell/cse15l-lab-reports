@@ -8,6 +8,7 @@ next time, i promise!
 
 ## Part 1: The Descent into Madness
 > If I am mad, it is mercy! May the gods pity the man who in his callousness can remain sane to the hideous end!
+
 *-- H.P. Lovecraft, The Temple*
 
 Luckily for us, most of this task can be replicated from existing server code. Since most of this code is from previous in-class examples, very little of it bears repeating. See below for the full source of the program.
