@@ -1,7 +1,9 @@
 # Servers and Bugs: How I Learned That Good Code Is a Myth
 
 these titles and quotes were supposed to all fit together and i was going to write this entire report as a dramatic narrative about going insane while trying to debug code before finally finding sanity in the form of new knowledge
+
 but i ran out of time while i was working on the dialogue so i decided to just submit a pretty plain lab report
+
 next time, i promise!
 
 ## Part 1: The Descent into Madness
@@ -18,6 +20,7 @@ Now, see the program in action:
 
 Since this URL's path contains "add-message" and a valid querystring, "test\n" is appended to `session_string`, which becomes "test\n".
 
+Now, we run it again with a second parameter:
 ![Program source code](images/servers_bugs/second_add.png)
 `Handler.handleRequest(new URI("http://localhost:8080/add-message?s=test2")` is called when this second request is made. At this time, session_string is equal to "". `url.getPath()` returns `/add-message?s=test2` and `url.getQuery()` returns `s=test2`.
 
@@ -25,8 +28,8 @@ Since this URL's path contains "add-message" and a valid querystring, "test2\n" 
 
 
 ## Part 2: A Glimpse of Sanity
-> Aha! In the distance
-A small cottage with a light on
+> Aha! In the distance  
+A small cottage with a light on  
 Hope! You move stealthily toward it
 
 *-- Rob Cantor, Shia LaBeouf*
@@ -105,10 +108,10 @@ Fixed behavior:
 ```
 
 ## Part 3: Home at Last
-> We mounted up, he first and I the second,
-  Till I beheld through a round aperture
-  Some of the beauteous things that Heaven doth bear;
-  \
+> We mounted up, he first and I the second,  
+  Till I beheld through a round aperture  
+  Some of the beauteous things that Heaven doth bear;  
+  \  
   Thence we came forth to rebehold the stars.
 
 *-- Dante Alighieri, Divine Comedy*
