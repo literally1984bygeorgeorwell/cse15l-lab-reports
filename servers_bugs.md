@@ -112,7 +112,7 @@ Fixed behavior:
 > We mounted up, he first and I the second,  
   Till I beheld through a round aperture  
   Some of the beauteous things that Heaven doth bear;  
-  \  
+    
   Thence we came forth to rebehold the stars.
 
 *-- Dante Alighieri, Divine Comedy*
