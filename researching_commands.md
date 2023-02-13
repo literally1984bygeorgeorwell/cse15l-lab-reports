@@ -19,11 +19,6 @@ It is dark. Not the deep, foreboding dark that childhood monsters monsters live 
 
 Short. Short. Long. Short.
 
-
-
-You strain your ears in the desperate hope that you can hear something 
-
-
 You are utterly lost.
 
 
@@ -113,7 +108,7 @@ In the below example, the `-atime` flag is used to find files accessed within th
 ![Recently accessed files](images/researching_commands/atime.png)
 
 In the below example, the `-mtime` flag is used to find project files that have not been modified in around a year. Note that I use `grep` to exclude `.git` files. While `find` has options (such as `-prune`) to exclude directories and files, I have not covered them in this lab report and thus did not use them.
-![Recently accessed files](images/researching_commands/mtime.png)
+![Older, unmodified files](images/researching_commands/mtime.png)
 
 ### -*min
 Actual options: `-amin`, `-cmin`, `-mmin`.
@@ -125,7 +120,7 @@ In the below example, the `-amin` flag is used to find recently accessed files. 
 Note that the example above is actually truncated. On modern systems, hundreds of files are being accessed in any given minute. Thus, performing a system-wide search (or even within the home directory) will return an extremely long list of files. Typically, `-atime` and `-amin` should be used in conjunction with `-name` and `-path` options to ignore these commonly accessed files.
 
 As mentioned earlier, these commands are particularly useful for incidence response. In the following scenario, an evil hacker has infiltrated the system. In response, we are conducting a security audit to search for Indicators of Compromise (IoC). The example below shows how the `-mmin` command can be used to locate a malicious executable that was recently hidden on the system.
-![Recently accessed files](images/researching_commands/mmin.png)
+![Recently changed executables](images/researching_commands/mmin.png)
 
 ### -*newer
 Actual options: `-anewer`, `-cnewer`, `-newer`, and `-newerXY`.
