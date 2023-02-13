@@ -223,7 +223,7 @@ In the following example, `-size` is used to return files which are bigger than 
 ## On Permissions
 Linux file permissions break very neatly down into a triplet of triplets. There are additional file bits (filetype and extended attributes), but those are generally considered separately from the core file permissions.
 
-The core file permissions can be broken down into universal permissions, group permissions, and owner permissions. The owner and group are given by the UID and GID of the file (as breifly mentioned in `Status Parameters`). The exact details of a UID and GID are not important, but readers are expected to understand that the UID refers to a specific user ("owner") and the GID refers to a group of users ("group owner" or "owning group"). Generally the UID belongs to the GID, although this is not always the case.
+The core file permissions can be broken down into universal permissions, group permissions, and owner permissions. The owner and group are given by the UID and GID of the file (as briefly mentioned in `Status Parameters`). The exact details of a UID and GID are not important, but readers are expected to understand that the UID refers to a specific user ("owner") and the GID refers to a group of users ("group owner" or "owning group"). Generally the UID belongs to the GID, although this is not always the case.
 
 Permissions are checked in the order Owner, Group, Others. Thus, the owner of a file will be subjected to its owner permissions, even if they are in the owning group. Counterintuitively, this means that an owner can actually have *less* permissions than the group! Of course, since the owner can change the permissions of a file at will, this point is more theoretical than anything.
 
@@ -246,8 +246,8 @@ The octal format represents each permission as a bit. MSB first, the permissions
 
 Thus, the permissions reads as:
 
-Owner: Read, Write
-Group: Read
+Owner: Read, Write  
+Group: Read  
 Others: Read
 
 The symbolic format represents permissions with letter codes. Refer to the below table for specific codes.
@@ -271,12 +271,13 @@ o=r
 
 Sometimes, like with the output of `ls -l`, the "owner", "group", and "others" codes are omitted and permissions are instead displayed in the same order as octal permissions, as in the example screenshot below.
 
-![Perms](images/researching_commands/suid.png)
+![Perms](images/researching_commands/perms.png)
 
 ## On File Descriptors
 File descriptors are handles for files, pipes, or sockets. Users familiar with Linux syscalls may recognize file descriptors from syscalls like `open` and `clone`.
 
 Unix systems should be POSIX compliant, and thus the following three file descriptors refer to the standard streams:
+
 | Value |    Full Name    | stdio Name |
 | ----- | --------------- | ---------- |
 |   0   |  Standard Input |    stdin   |
