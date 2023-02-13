@@ -3,7 +3,7 @@
 > You’ve got to find yourself first. Everything else’ll follow.
 *-- Charles de Lint*
 
-Hi! I may have gotten a bit carried away writing some of this report (it feels *wrong* to mention `-atime` but then ignore `-perm`!) and reached a lot more than 4 flags. If you're in a rush, feel free to skim the `Filename Parameters` section, then move on to [`written_2` Examples](#written_2-Examples). The rest of the options are only provided for information purposes.
+Hi! I may have gotten a bit carried away writing some of this report (it feels *wrong* to mention `-atime` but then ignore `-perm`!) and reached a lot more than 4 flags. If you're in a rush, feel free to skim the `Filename Parameters` section, then move on to [`written_2` Examples](#written_2-examples). The rest of the options are only provided for information purposes.
 
 ## Sources Used (boring disclaimer)
 All information in this lab report was derived either from personal experience or from the current version of the man-pages project (5.13 as of February 2023). No other sources were consulted during research.
@@ -68,7 +68,7 @@ The new regular expression is much more specific and true to the SID format.
 ![SIDs](images/researching_commands/extract_powerful.png)
 
 ## Time Parameters
-`find`, however, is much more powerful than simple filename matches. In fact, `find` can match by various metadata values, including creation and modification time. Due to the nature of these options, they are most typically used in incidence response or other metatasks involving analyzing system usage (for example, determining which files a hacker has read or listing out all files that have not been updated in a long time). Nonetheless, they are still incredibly useful options and should be learned.
+`find`, however, is much more powerful than simple filename matches. In fact, `find` can match by various metadata values, including creation and modification time. Due to the nature of these options, they are most typically used in incident response or other metatasks involving analyzing system usage (for example, determining which files a hacker has read or listing out all files that have not been updated in a long time). Nonetheless, they are still incredibly useful options and should be learned.
 
 I was unable to deliberately construct an example directory for these examples, since messing with file metadata is a bit too much work for a lab report. As such, I do not have a reference directory tree available. 
 
@@ -100,13 +100,13 @@ In the below example, the `-amin` flag is used to find recently accessed files. 
 
 Note that the example above is actually truncated. On modern systems, hundreds of files are being accessed in any given minute. Thus, performing a system-wide search (or even within the home directory) will return an extremely long list of files. Typically, `-atime` and `-amin` should be used in conjunction with the `-name` and `-path` options to ignore these commonly accessed files.
 
-As mentioned earlier, these commands are particularly useful for incidence response. In the following scenario, an evil hacker has infiltrated the system. In response, we are conducting a security audit to search for Indicators of Compromise (IoC). The example below shows how the `-mmin` command can be used to locate a malicious executable that was recently hidden on the system.
+As mentioned earlier, these commands are particularly useful for incident response. In the following scenario, an evil hacker has infiltrated the system. In response, we are conducting a security audit to search for Indicators of Compromise (IoC). The example below shows how the `-mmin` command can be used to locate a malicious executable that was recently hidden on the system.
 ![Recently changed executables](images/researching_commands/mmin.png)
 
 ### -*newer
 Actual options: `-anewer`, `-cnewer`, `-newer`, and `-newerXY`.
 
-The `-*newer` commands allow us to match any file whose time parameter is less than some reference file. This is, again, particularly useful for incidence response. In the following example, we know that the infiltrator has read the list of secret passwords. We are interested in finding what other files they may have accessed. The example below shows how the `-anewer` command can be used to generate a list of these files.
+The `-*newer` commands allow us to match any file whose time parameter is less than some reference file. This is, again, particularly useful for incident response. In the following example, we know that the infiltrator has read the list of secret passwords. We are interested in finding what other files they may have accessed. The example below shows how the `-anewer` command can be used to generate a list of these files.
 
 ![Hacker files](images/researching_commands/anewer.png)
 
