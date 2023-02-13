@@ -202,11 +202,11 @@ In the following example, `-anewer` is used to return files which were accessed 
 
 ![anewer search](images/researching_commands/written_2/anewer.png)
 
-In the following example, `-status` is used to return files which are universally accessible. This is true for all files in this directory.
+In the following example, `-perm` is used to return files which are universally accessible. This is true for all files in this directory.
 
 ![perm search for 777](images/researching_commands/written_2/777.png)
 
-In the following example, `-status` is used to return files which are readable by the owner. Again, this is true for all files in this directory (since all files are 777).
+In the following example, `-perm` is used to return files which are readable by the owner. Again, this is true for all files in this directory (since all files are 777).
 
 ![perm search for u=r](images/researching_commands/written_2/readable.png)
 
