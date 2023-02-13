@@ -1,0 +1,141 @@
+# Researching Commands: The Art of `Find`ing Yourself
+
+> You’ve got to find yourself first. Everything else’ll follow.
+*-- Charles de Lint*
+
+## Sources Used (boring disclaimer)
+All information in this lab report was derived either from personal experience or from the current version of the man-pages project (5.13 as of February 2023). No other sources were consulted during research.
+
+Note to whoever has to read this:
+I wrote this as a narrative just because I could. If you would rather read a clean, clinical, and *boring* lab report instead, please skip [here](#CS-Majors-Are-Boring).
+
+
+## Part 1: Lost
+> He began his new life standing up, surrounded by cold darkness and stale, dusty air.
+
+*-- James Dashner, The Maze Runner*
+
+It is dark. Not the deep, foreboding dark that childhood monsters monsters live in and scotophobes cower from, but the simple blackness of the void. Of nothingness. The kind of darkness that would make you doubt your own existence were it not for the insistent, rhythmic tones in the distance.
+
+Short. Short. Long. Short.
+
+
+
+You strain your ears in the desperate hope that you can hear something 
+
+
+You are utterly lost.
+
+
+
+
+## Part 2: A Glimpse of Sanity
+> Aha! In the distance  
+A small cottage with a light on  
+Hope! You move stealthily toward it
+
+*-- Rob Cantor, Shia LaBeouf*
+
+aa
+
+## Part 3: Home at Last
+> We mounted up, he first and I the second,  
+  Till I beheld through a round aperture  
+  Some of the beauteous things that Heaven doth bear;  
+    Thence we came forth to rebehold the stars.
+
+*-- Dante Alighieri, Divine Comedy*
+
+
+
+# CS Majors Are Boring
+
+## Overview
+The `find` command is part of the GNU Find Utilities, and is included by default with pretty much every major Linux distro.  First, let's look at what it does. According man-pages-5.13 (current as of 2021-08-27),
+
+> GNU find searches the directory tree rooted at each given starting-point by evaluating the given expression from left to right, according to the rules of precedence (see section OPERATORS), until the outcome is known (the left hand side is false for and operations, true for or), at which point find moves on to the next file name. If no starting-point is specified, `.' is assumed.
+
+Ignoring the finer details (which is really only relevant to security researchers and power users), the description seems pretty straightforward. Find evaluates the provided expression (which mostly follows standard Unix glob syntax) and then searches within the specified directory tree, defaulting to the current directory if none is specified.
+
+This simple description conceals a *very* powerful program more than 1500 lines of source code. Let's take a look at some reasons why `find` is so powerful.
+
+## Filename Parameters
+Let's start with the most straightforward options. `find` lets you filter by various attributes of the filename. For the next few commands, assume the following directory structure:
+
+![Directory tree of find_demo](images/researching_commands/tree.png)
+
+### -name
+The `-name` option lets us specify a glob pattern (called "shell pattern" in all GNU Find Utilities) and will return all files that match that pattern. If we do not use any wildcards, `find` will do a direct match; that is, it will not search for substrings.
+
+In the example below, we search the example directory for the exact string "secret".
+
+![Searching for direct string in filename](images/researching_commands/name_nowild.png)
+
+Thus, for most usecases, we will want to use some combination of wildcards to instead search for substrings. The exact art of doing this is out of the scope of this report, but the following is one example of how all filenames beginning with the string "secret" may be found.
+
+![Searching for a substring in filename](images/researching_commands/name_wild.png)
+
+### -iname
+There is one important thing to note about the `-name` option, however: it is case sensitive. While this is often the desired behavior, users may sometimes want to perform a case insensitive search. It is possible to construct a shell pattern that would match case insensitive filenames, but it would be much easier to use `-iname`, the insensitive name search.
+
+In the example below, note how all files with the filename "noise" are matched, regardless of case.
+![Searching for case-insensitive string in filename](images/researching_commands/iname_nowild.png)
+
+As with any option that takes a pattern, `-iname` can parse wildcards. In the example below, all instances of the substring `secret` are matched. Note the additional files that were not included in our `-name` search using the same pattern.
+![Searching for case-insensitive string in filename](images/researching_commands/iname_wild.png)
+
+### -path
+Both `-name` and `-iname` will only match the actual filename. If you want to search for entire filepaths, the `-path` command allows you to specify one. This has the obvious use of letting us search only for nested files, for instance:
+![Nested path search](images/researching_commands/path_nested.png)
+Notice how the output of the second command does not contain `secret` or `secret.txt`, as they are in the base directory.
+
+There is, however, a much more subtle use of this command. Using `find` on a nonexistent directory will throw an error -- something which can be undesirable for a variety of reasons. Specifying the directory as part of `path`, however, will simply return no results. While this has no immediate use in an interactive shell, this can greatly simplify error handling in shell scripts with user-supplied input. 
+
+![Lack of error message in nonexistent path](images/researching_commands/path_error.png)
+Note the lack of output to stderr in the second command.
+
+## Time Parameters
+`find`, however, is much more powerful than simple filename matches. In fact, `find` can match by various metadata values, including creation and modification time. Due to the nature of these options, they are most typically used in incidence response or other metatasks involving analyzing system usage (for example, determining which files a hacker has read or listing out all files that have not been updated in a long time). Nonetheless, they are still incredibly useful options and should be learned.
+
+I was unable to deliberately construct an example directory for these examples, since messing with file metadata is a bit too much work for a lab report. As such, I do not have a reference directory tree available. 
+
+Note that the options broadly exist for access time (`a`), status change time (`c`), and modification time (`m`). Instead of listing out all 11 commands, I elected instead to list out the suffixes, since they are all similar in functionality. The exact commands are listed below each suffix.
+
+### -*time
+Actual options: `-atime`, `-ctime`, `-mtime`, `-used`.
+
+The `-*time` family of options match any file whose time attribute is within a certain range, specified by `n` (days). There are three possible formats for `n`:
+`+n` matches any value *greater than* `n`
+`n` matches the exact value `n`
+`-n` matches any value *less than* `n`.
+
+In the below example, the `-atime` flag is used to find files accessed within the last 5 days. In that time, I had modified my `ssh` configuration, connected to my oracle server (using the `oci` tool), and executed example `find` commands in my example directory.
+![Recently accessed files](images/researching_commands/atime.png)
+
+In the below example, the `-mtime` flag is used to find project files that have not been modified in around a year. Note that I use `grep` to exclude `.git` files. While `find` has options (such as `-prune`) to exclude directories and files, I have not covered them in this lab report and thus did not use them.
+![Recently accessed files](images/researching_commands/mtime.png)
+
+### -*min
+Actual options: `-amin`, `-cmin`, `-mmin`.
+
+The `-*min` family of options is nearly indentical to the `-*time` family, using minutes instead of days for its time unit.
+
+In the below example, the `-amin` flag is used to find recently accessed files. I had recently installed a package with `pip` and pushed a repository using `git`.
+![Recently accessed files](images/researching_commands/amin.png)
+Note that the example above is actually truncated. On modern systems, hundreds of files are being accessed in any given minute. Thus, performing a system-wide search (or even within the home directory) will return an extremely long list of files. Typically, `-atime` and `-amin` should be used in conjunction with `-name` and `-path` options to ignore these commonly accessed files.
+
+As mentioned earlier, these commands are particularly useful for incidence response. In the following scenario, an evil hacker has infiltrated the system. In response, we are conducting a security audit to search for Indicators of Compromise (IoC). The example below shows how the `-mmin` command can be used to locate a malicious executable that was recently hidden on the system.
+![Recently accessed files](images/researching_commands/mmin.png)
+
+### -*newer
+Actual options: `-anewer`, `-cnewer`, `-newer`, and `-newerXY`.
+
+The `-*newer` commands allow us to match any file whose time parameter is less than some reference file. This is, again, particularly useful for incidence response. In the following example, we know that the infiltrator has read the list of secret passwords. We are interested in finding what other files they may have accessed. The example belowo shows how the `-anewer` command can be used to generate a list of these files.
+
+![Hacker files](images/researching_commands/anewer.png)
+
+We now know that the hacker has stolen my private keys and read my SSH config file! I also read the `/etc/shadow` file and modified the `/etc/hosts` file, but neither of these showed up since I only searched within my home directory. 
+
+These commands can also be used to find recent changes in large projects. In the example below, the `-newer` option allows us to find the Javascript files that have been changed since `app.js` was last updated.
+
+![Recent changes](images/researching_commands/newer.png)
