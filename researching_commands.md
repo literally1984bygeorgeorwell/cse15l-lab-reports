@@ -3,7 +3,7 @@
 > You’ve got to find yourself first. Everything else’ll follow.
 *-- Charles de Lint*
 
-Hi! I may have gotten a bit carried away writing some of this report (it feels *wrong* to mention `-atime` but then ignore `-perm`!) and reached a lot more than 4 flags. If you're in a rush, feel free to skim the `Filename Parameters` section and move on. The rest of the options are only provided for information purposes.
+Hi! I may have gotten a bit carried away writing some of this report (it feels *wrong* to mention `-atime` but then ignore `-perm`!) and reached a lot more than 4 flags. If you're in a rush, feel free to skim the `Filename Parameters` section, then move on to [`written_2` Examples](#written_2-Examples). The rest of the options are only provided for information purposes.
 
 ## Sources Used (boring disclaimer)
 All information in this lab report was derived either from personal experience or from the current version of the man-pages project (5.13 as of February 2023). No other sources were consulted during research.
@@ -143,6 +143,80 @@ Since all options can be used multiple times, this gives us an extraordinary amo
 
 ![Middle files](images/researching_commands/size_range.png)
 
+## `written_2` Examples
+In the following example, a direct filename search is performed to locate a specific file:
+
+![Direct filename search](images/researching_commands/written_2/name_direct.png)
+
+In the following example, a wildcard filename search is performed to find all history travel guides:
+
+![Wildcard filename search](images/researching_commands/written_2/name_wildcard.png)
+
+In the following example, a direct case insensitive filename search is performed to locate a specific file:
+
+![Direct case insensitive direct filename search](images/researching_commands/written_2/iname_direct.png)
+
+In the following example, a wildcard case insensitive filename search is performed to find all location recommendations:
+
+![Direct case insensitive wildcard filename search](images/researching_commands/written_2/iname_wildcard.png)
+
+In the following example, a path search is performed to only return files that are nested 4 layers in:
+
+![Nested path search](images/researching_commands/written_2/path_nested.png)
+
+In the following example, a path search is performed to only return txt files under the OUP subdirectory. Note how the travel guides are excluded:
+
+![Restricted path search](images/researching_commands/written_2/path_restricted_txt.png)
+
+In the following example, a regex search is performed to only match files with `ch` in their name. Note that the same result could have been accomplished with `-name`:
+
+![Regex search](images/researching_commands/written_2/regex_chapters.png)
+
+In the following example, a regex search is performed to only match alphanumeric filenames whose length is between 5 and 10 (not including file extension). Note that this result could **not** have been accomplished with `-name`:
+
+![Regex length search](images/researching_commands/written_2/regex_length.png)
+
+(I don't know why I couldn't get `[:alnum:]` working...I don't really know POSIX regex)
+
+In the following example, `-atime` is used to return recently accessed files. Since I used `tree` recently (but did not open any of the text files), this returns a list of all directories:
+
+![atime search](images/researching_commands/written_2/atime.png)
+
+In the following example, `-mtime` is used to return files that were modified more than 10 days ago. Since this directory was created less than a week ago, there are no such files:
+
+![mtime search](images/researching_commands/written_2/mtime.png)
+
+In the following example, `-cmin` is used to return files whose status was modified more than an hour ago. Since no such operations occurred, this query is equivalent to finding all files *created* more than an hour ago. Output truncated:
+
+![mtime search](images/researching_commands/written_2/cmin.png)
+
+In the following example, `-amin` is used to return files who were accessed less than 5 minutes ago. Since the only operations run in the last 5 minutes were directory operations, only directories are returned:
+
+![mtime search](images/researching_commands/written_2/amin.png)
+
+In the following example, `-newer` is used to return files which were modified after the `OUP/` subdirectory was. Since I have not modified any of the files or directories in this directory tree, this gives us some *very* fascinating insight into the order that files are created in:
+
+![newer search](images/researching_commands/written_2/newer.png)
+
+In the following example, `-anewer` is used to return files which were accessed after the `written_2` itself was. Again, we can glean some interesting insights about Unix file operations:
+
+![anewer search](images/researching_commands/written_2/anewer.png)
+
+In the following example, `-status` is used to return files which are universally accessible. This is true for all files in this directory.
+
+![perm search for 777](images/researching_commands/written_2/777.png)
+
+In the following example, `-status` is used to return files which are readable by the owner. Again, this is true for all files in this directory (since all files are 777).
+
+![perm search for u=r](images/researching_commands/written_2/readable.png)
+
+In the following example, `-size` is used to return files which are smaller than one megabyte. This is only true for our own created files.
+
+![small files](images/researching_commands/written_2/small_size.png)
+
+In the following example, `-size` is used to return files which are bigger than 150 kilobytes and less than 800 kilobytes:
+
+![medium files](images/researching_commands/written_2/size_range.png)
 
 # Appendix
 
