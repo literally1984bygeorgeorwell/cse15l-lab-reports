@@ -1,0 +1,22 @@
+# Researching Commands: The Art of `Find`ing Yourself
+
+> You’ve got to find yourself first. Everything else’ll follow.
+*-- Charles de Lint*
+
+## Sources Used (boring disclaimer)
+All information in this lab report was derived either from personal experience or from the current version of the man-pages project (5.13 as of February 2023). No other sources were consulted during research.
+
+Note to whoever has to read this:
+I wrote this as a narrative just because I could. If you would rather read a clean, clinical, and *boring* lab report instead, please skip [here](#CS-Majors-Are-Boring).
+
+
+## Part 1: Lost
+> He began his new life standing up, surrounded by cold darkness and stale, dusty air.
+
+*-- James Dashner, The Maze Runner*
+
+It is dark. Not the deep, foreboding dark that childhood monsters monsters live in and scotophobes cower from, but the simple blackness of the void. Of nothingness. The kind of darkness that would make you doubt your own existence were it not for the insistent, rhythmic tones in the distance.
+
+Short. Short. Long. Short.
+
+You are utterly lost.
