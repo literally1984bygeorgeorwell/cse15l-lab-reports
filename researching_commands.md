@@ -1,6 +1,7 @@
 # Researching Commands: The Art of `Find`ing Yourself
 
 > You’ve got to find yourself first. Everything else’ll follow.
+
 *-- Charles de Lint*
 
 Hi! I may have gotten a bit carried away writing some of this report (it feels *wrong* to mention `-atime` but then ignore `-perm`!) and reached a lot more than 4 flags. If you're in a rush, feel free to skim the `Filename Parameters` section, then move on to [`written_2` Examples](#written_2-examples). The rest of the options are only provided for information purposes.
