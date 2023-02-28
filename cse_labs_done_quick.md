@@ -100,9 +100,11 @@ git push
 Annotated with screenshots (and corresponding steps), we have:
 
 1. Fork the repository
+
 ![Step one of naive route](images/cse_labs_done_quick/naive_1.png)
 
 2. SSH into ieng6
+
 ```
 ssh ucsd
 <ENTER>
@@ -112,6 +114,7 @@ This commands are pretty simple. We connect to the server specified through our 
 ![Step two of naive route](images/cse_labs_done_quick/naive_2.png)
 
 3. Clone the repository
+
 ```
 git clone ucsd:literally1984bygeorgeorwell/lab7.git
 <ENTER>
@@ -121,6 +124,7 @@ This command is also basic. We clone the repository, using the server specified 
 ![Step three of naive route](images/cse_labs_done_quick/naive_3.png)
 
 4. Compile and run the code
+
 ```
 cd lab7
 <ENTER>
@@ -134,6 +138,7 @@ The first command changes our working directory to the newly cloned directory. T
 ![Step four of naive route](images/cse_labs_done_quick/naive_4.png)
 
 5. Fix the code
+
 ```
 vi ListExamples.java
 <ENTER>
@@ -153,6 +158,7 @@ The first command opens `ListExamples.java` in `vi`. The next 53 keystrokes posi
 ![Step five of naive route](images/cse_labs_done_quick/naive_5.png)
 
 6. Compile and run the code
+
 ```
 javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
 <ENTER>
@@ -164,6 +170,7 @@ Again, the first command compiles all .java files, while the third one runs our 
 ![Step six of naive route](images/cse_labs_done_quick/naive_6.png)
 
 7. Add, commit, and push the fixed file
+
 ```
 git add .
 <ENTER>
