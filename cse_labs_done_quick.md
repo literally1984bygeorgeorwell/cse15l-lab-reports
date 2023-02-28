@@ -101,91 +101,84 @@ Annotated with screenshots (and corresponding steps), we have:
 
 1. Fork the repository
 
-![Step one of naive route](images/cse_labs_done_quick/naive_1.png)
-
+	![Step one of naive route](images/cse_labs_done_quick/naive_1.png)
 2. SSH into ieng6
 
-```
-ssh ucsd
-<ENTER>
-```
-This commands are pretty simple. We connect to the server specified through our SSH configuration.
+	```
+	ssh ucsd
+	<ENTER>
+	```
+	This commands are pretty simple. We connect to the server specified through our SSH configuration.
 
-![Step two of naive route](images/cse_labs_done_quick/naive_2.png)
-
+	![Step two of naive route](images/cse_labs_done_quick/naive_2.png)
 3. Clone the repository
 
-```
-git clone ucsd:literally1984bygeorgeorwell/lab7.git
-<ENTER>
-```
-This command is also basic. We clone the repository, using the server specified through our SSH configuration and specifying the username and repository corresponding to our fork.
+	```
+	git clone ucsd:literally1984bygeorgeorwell/lab7.git
+	<ENTER>
+	```
+	This command is also basic. We clone the repository, using the server specified through our SSH configuration and specifying the username and repository corresponding to our fork.
 
-![Step three of naive route](images/cse_labs_done_quick/naive_3.png)
-
+	![Step three of naive route](images/cse_labs_done_quick/naive_3.png)
 4. Compile and run the code
 
-```
-cd lab7
-<ENTER>
-javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
-<ENTER>
-java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ListExamplesTests
-<ENTER>
-```
-The first command changes our working directory to the newly cloned directory. The second one compiles all .java files, and the third one runs our tester. The `-cp` option allows us to include both Hamcrest and JUnit in our classpath.
+	```
+	cd lab7
+	<ENTER>
+	javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
+	<ENTER>
+	java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ListExamplesTests
+	<ENTER>
+	```
+	The first command changes our working directory to the newly cloned directory. The second one compiles all .java files, and the third one runs our tester. The `-cp` option allows us to include both Hamcrest and JUnit in our classpath.
 
-![Step four of naive route](images/cse_labs_done_quick/naive_4.png)
-
+	![Step four of naive route](images/cse_labs_done_quick/naive_4.png)
 5. Fix the code
 
-```
-vi ListExamples.java
-<ENTER>
-<DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN>
-<RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT>
-i
-<DEL>
-2
-<ESC>
-:wq!
-<ENTER>
-```
-The first command opens `ListExamples.java` in `vi`. The next 53 keystrokes position our cursor before the typo. `i` enters insert mode, `<DEL>` removes the faulty character, `2` fixes the typo, `<ESC>` exits insert mode, and `:wq!` writes then exits the file (forced).
+	```
+	vi ListExamples.java
+	<ENTER>
+	<DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN><DOWN>
+	<RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT>
+	i
+	<DEL>
+	2
+	<ESC>
+	:wq!
+	<ENTER>
+	```
+	The first command opens `ListExamples.java` in `vi`. The next 53 keystrokes position our cursor before the typo. `i` enters insert mode, `<DEL>` removes the faulty character, `2` fixes the typo, `<ESC>` exits insert mode, and `:wq!` writes then exits the file (forced).
 
-(screenshot taken immediately before last keystroke)
+	(screenshot taken immediately before last keystroke)
 
-![Step five of naive route](images/cse_labs_done_quick/naive_5.png)
-
+	![Step five of naive route](images/cse_labs_done_quick/naive_5.png)
 6. Compile and run the code
 
-```
-javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
-<ENTER>
-java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ListExamplesTests
-<ENTER>
-```
-Again, the first command compiles all .java files, while the third one runs our tester.
+	```
+	javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java
+	<ENTER>
+	java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ListExamplesTests
+	<ENTER>
+	```
+	Again, the first command compiles all .java files, while the third one runs our tester.
 
-![Step six of naive route](images/cse_labs_done_quick/naive_6.png)
-
+	![Step six of naive route](images/cse_labs_done_quick/naive_6.png)
 7. Add, commit, and push the fixed file
 
-```
-git add .
-<ENTER>
-git commit
-<ENTER>
-i
-fixed
-<ESC>
-:wq!
-<ENTER>
-git push
-<ENTER>
-```
-The first command adds all changed files to the staging area. The second command commits these changes. Since our default editor is `vim`, we first enter insert mode with `i`, write our commit message, exit insert mode with `<ESC>`, then write and exit the file with `:wq!`. The third command pushes our commit to the remote repository.
-
+	```
+	git add .
+	<ENTER>
+	git commit
+	<ENTER>
+	i
+	fixed
+	<ESC>
+	:wq!
+	<ENTER>
+	git push
+	<ENTER>
+	```
+	The first command adds all changed files to the staging area. The second command commits these changes. Since our default editor is `vim`, we first enter insert mode with `i`, write our commit message, exit insert mode with `<ESC>`, then write and exit the file with `:wq!`. The third command pushes our commit to the remote repository.
 ![Step seven of naive route](images/cse_labs_done_quick/naive_7.png)
 
 **NOTE:** If you're really busy and just need to score this lab report, you can stop reading here. These 180 lines should meet all of the requirements for a full score (exact route with keystrokes, screenshots, and explanation of commands). If, however, you're interested in the route optimization, feel free to keep reading.
