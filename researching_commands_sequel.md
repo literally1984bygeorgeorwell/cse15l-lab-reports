@@ -15,7 +15,7 @@ Apologies in advance for the relative lack of examples. I'm not breaking my hard
 ![Lack of error message in nonexistent path](images/researching_commands_2/damage.png)
 
 ## Sources Used
-All information in this lab report was derived either from personal experience or from the current version of the man-pages project (5.13 as of March 2023). No other sources were consulted during research.
+All information in this lab report was derived either from personal experience or from the current version of the man-pages project (5.13 as of March 2023). No other sources were consulted during research. Some images were sourced from web sources. Where relevant, this is indicated.
 
 ## Overview
 The `fsck` command, short for "file system consistency check", is a system utility used to check and, when possible, repair Linux file systems. It's an incredibly powerful tool for undoing what we in the industry call a "pro gamer moment".
@@ -120,7 +120,7 @@ The `-t` option specifies a list of filesystem types to be checked. The list of 
 
 Filesystem options can additionally be specified using the `opts=` prefix. These filesystems should correlate to valid mount options in `/etc/fstab`.
 
-When used in tandem with `A`, this filesystem list functions as a filter.
+When used in tandem with `-A`, this filesystem list functions as a filter.
 
 Example usage:
 `fsck -t ext3 /dev/sda1`  
