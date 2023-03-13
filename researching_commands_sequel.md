@@ -108,6 +108,10 @@ Example usage:
 ### -C
 The `-C` option specifies that `fsck` should display progress bars for filesystem checkers. Currently only the checkers for `ext2` and `ext3` filesystems support progress bar displays.
 
+Image sourced from https://github.com/freemint/freemint/issues/73:
+
+![Example of -C output](images/researching_commands_2/progress.png)
+
 Example usage:
 `fsck -C /dev/sda1`
 
