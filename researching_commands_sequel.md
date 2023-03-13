@@ -102,7 +102,7 @@ The `-M` option specifies that `fsck` should not run on mounted filesystems. If 
 ![Example of -M output](images/researching_commands_2/mounted_skip.png)
 
 Example usage:
-`fsck -M /dev/sda1`
+`fsck -M /dev/sda1`  
 `fsck -AM`
 
 ### -C
@@ -119,9 +119,9 @@ Filesystem options can additionally be specified using the `opts=` prefix. These
 When used in tandem with `A`, this filesystem list functions as a filter.
 
 Example usage:
-`fsck -t ext3 /dev/sda1`
-`fsck -A -t ext2`
-`fsck -A -t noext4`
+`fsck -t ext3 /dev/sda1`  
+`fsck -A -t ext2`  
+`fsck -A -t noext4`  
 `fsck -A -t ext2,ext3,opts=ro`
 
 ## Operation Options
@@ -142,28 +142,28 @@ Image sourced from https://www.thegeekstuff.com/2012/08/fsck-command-examples/:
 
 
 Example usage:
-`fsck -a /dev/sda1`
+`fsck -a /dev/sda1`  
 `fsck -A -a` (note: equivalent to `fsck -Aa`, but the former example is preferred for clarity)
 
 ### -y
 The `-y` option specifies that a checker should automatically repair the filesystem. This option is equivalent to implicitly answering "yes" to all user prompts. Unlike `-a`, `fsck` will not automatically exit when a complex problem is encountered.
 
 Example usage:
-`fsck -y /dev/sda1`
+`fsck -y /dev/sda1`  
 `fsck -A -y`
 
 ### -n
 The `-n` option specifies that a checker should *not* repair the filesystem. This option is equivalent to implicitly answering "no" to all user prompts. Unlike `-N`, this option is a checker-specific option.
 
 Example usage:
-`fsck -n /dev/sda1`
+`fsck -n /dev/sda1`  
 `fsck -A -n`
 
 ### -r
 The `-r` option specifieis that a checker should be run in interactive mode. It is heavily advised that this option is run in tandem with `-s`.
 
 Example usage:
-`fsck -rs /dev/sda11
+`fsck -rs /dev/sda11`  
 `fsck -A -rs`
 
 ## Additional Notes
