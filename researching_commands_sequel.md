@@ -164,7 +164,7 @@ Example usage:
 `fsck -A -n`
 
 ### -r
-The `-r` option specifieis that a checker should be run in interactive mode. It is heavily advised that this option is run in tandem with `-s`.
+The `-r` option specifies that a checker should be run in interactive mode. It is heavily advised that this option is run in tandem with `-s`.
 
 Example usage:  
 `fsck -rs /dev/sda11`  
